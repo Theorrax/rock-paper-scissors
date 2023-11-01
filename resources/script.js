@@ -58,3 +58,5 @@ function game (playerScore, computerScore) {
 
 // Line 60 runs the function to play the game. 
 game();
+
+//TO DO: Make a loop function which plays the game until either the player or the computer gets to five wins. 
