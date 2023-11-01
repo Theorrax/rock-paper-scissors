@@ -5,7 +5,6 @@ function getComputerChoice(){
 }
 
 
-
 function game (playerScore, computerScore) {
     //Line 9 is a function which plays 5 games. 
     var playerScore = 0;

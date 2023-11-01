@@ -18,3 +18,6 @@ Objectives:
 
 ## Note 
 This project is not meant to have a GUI, this project must be accessed through the console in devtools. 
+
+## Reflection 
+After completing this project I feel a sense of satisfaction due to the daunting nature of this project. This is the first true programming task that i've ever had to complete before. Therefore, there was a steep learning curve to overcome. All together this project took about two weeks to complete. There was plenty of head banging days trying to understand how to write an array, how to write functions, and continuos debugging through the project. This project will be revisited with two goals in mind in the coming weeks. The first task will be to write a loop to replace the lines from 45-54. Secondly, A graphical user interface (GUI) will be added at some point in the future as well. Over all, this was a great, and Google questions that I had to overcome my challenges throughout the project. 
