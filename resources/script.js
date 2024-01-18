@@ -1,8 +1,23 @@
 const allChoices = ["ROCK", "PAPER", "SCISSORS"];
 
-function getComputerChoice(){
-    return allChoices[(Math.floor(Math.random() * allChoices.length))];
-}
+//RANDOMIZED COMPUTER CHOICE FUNCTION: START 
+
+const getComputerChoice = () => {return allChoices[(Math.floor(Math.random() * allChoices.length))];}
+
+//RANDOMIZED COMPUTER CHOICE FUNCTION: END
+
+//EVENT LISTENER FUNCTIONALITY: START
+
+//user selection choice is rock, event listener is connected to an input element.
+document.getElementById("userSelectionRock").addEventListener("click", () => console.log("You selected Rock"));
+
+//user selection choice is paper, event listener is connected to an input element.
+document.getElementById("userSelectionPaper").addEventListener("click", () => console.log("You selected Paper"));
+
+//user selection choice is scissors, event listener is conncted to an input element.
+document.getElementById("userSelectionScissors").addEventListener("click", () => console.log("You selected Scissors"));
+
+//EVENT LISTENER FUNCTIONALITY: END
 
 
 function game (playerScore, computerScore) {
@@ -11,7 +26,7 @@ function game (playerScore, computerScore) {
     var computerScore = 0;
     function playRound (computerSelection, playerSelection){
         //line 13 is a function which plays one round, keeping track of the score and displays weather you win or lose. 
-        var playerEntry = prompt("Choose your hand: Rock, Paper or Scissors").toUpperCase()
+        // var playerEntry = prompt("Choose your hand: Rock, Paper or Scissors").toUpperCase()
         var computerSelection = getComputerChoice();
         var playerSelection = playerEntry;
         if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
@@ -58,4 +73,8 @@ function game (playerScore, computerScore) {
 // Line 60 runs the function to play the game. 
 game();
 
-//TO DO: Make a loop function which plays the game until either the player or the computer gets to five wins. 
+//TO DO: - Make a loop function which plays the game until either the player or the computer gets to five wins. 
+//       - Remove the logic that plays 5 rounds 
+
+
+document.getElementById("playerSelectionRock").addEventListener("click", displayDate);
