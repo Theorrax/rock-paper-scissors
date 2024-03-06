@@ -40,10 +40,13 @@ scissors.addEventListener("click", () => {
 
 function match () {
 if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
+    playerChoice = null
     return console.log("You win! The rock smashed the scissors")
 } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
+    playerChoice = null
     return console.log("You win! The paper covers the rock")
 } else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
+    playerChoice = null
     return console.log("You win! The scissors slice through the paper")
 } else if (playerChoice === computerChoice) {
     console.log("It's a tie!")
