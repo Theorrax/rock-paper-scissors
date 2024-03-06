@@ -17,7 +17,6 @@ function generateComputerChoice () {
     }
 }
 
-let displayPlayerChoice = document.getElementById("displayPlayerChoice");
 const rock = document.body.querySelector("#rock");
 const paper = document.body.querySelector("#paper");
 const scissors = document.body.querySelector("#scissors");
@@ -25,16 +24,32 @@ const scissors = document.body.querySelector("#scissors");
 
 rock.addEventListener("click", () => {
     playerChoice = allChoices[0];
-    displayPlayerChoice.innerText = playerChoice;
+    match()
 });
 
 paper.addEventListener("click", () => {
     playerChoice = allChoices[1];
-    displayPlayerChoice.innerText = playerChoice;
+    match()
 });
 
 scissors.addEventListener("click", () => {
     playerChoice = allChoices[2];
-    displayPlayerChoice.innerText = playerChoice;
+    match()
 });
+
+
+function match () {
+if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
+    return console.log("You win! The rock smashed the scissors")
+} else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
+    return console.log("You win! The paper covers the rock")
+} else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
+    return console.log("You win! The scissors slice through the paper")
+} else if (playerChoice === computerChoice) {
+    console.log("It's a tie!")
+} else {
+    return console.log("You lose!")
+}
+}
+
 
