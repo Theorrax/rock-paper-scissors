@@ -49,8 +49,10 @@ if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
     playerChoice = null
     return console.log("You win! The scissors slice through the paper")
 } else if (playerChoice === computerChoice) {
-    console.log("It's a tie!")
+    playerChoice = null
+    return console.log("It's a tie!")
 } else {
+    playerChoice = null
     return console.log("You lose!")
 }
 }
