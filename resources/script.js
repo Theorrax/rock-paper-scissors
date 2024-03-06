@@ -1,8 +1,10 @@
 const allChoices = ["ROCK", "PAPER", "SCISSORS"]
 let computerChoice = null;
 let playerChoice = null;
+let matchResults = null;
 let playerScore = 0;
 let computerScore = 0;
+
 
 function getRandomNumber (min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min; 
@@ -22,8 +24,9 @@ function generateComputerChoice () {
 const rock = document.body.querySelector("#rock");
 const paper = document.body.querySelector("#paper");
 const scissors = document.body.querySelector("#scissors");
-let matchResults = null;
 const displayMatchResults = document.getElementById("displayMatchResults");
+const displayPlayerScore = document.getElementById("displayPlayerScore");
+const displayComputerScore = document.getElementById("displayComputerScore");
 
 
 rock.addEventListener("click", () => {
@@ -46,36 +49,47 @@ scissors.addEventListener("click", () => {
 
 
 function match () {
-if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
-    playerChoice = null;
-    computerChoice = null;
-    playerScore++;
-    matchResults = "You win! The rock smashed the scissors";
-    displayMatchResults.innerText = matchResults;
-} else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
+    if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
+        playerChoice = null;
+        computerChoice = null;
+        playerScore++;
+        matchResults = "You win! The rock smashed the scissors";
+        displayMatchResults.innerText = matchResults;
+        displayPlayerScore.innerText = playerScore;
+        displayComputerScore.innerText = computerScore;
+    } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
     playerChoice = null;
     computerChoice = null;
     playerScore++;
     matchResults = "You win! The paper covers the rock";
     displayMatchResults.innerText = matchResults;
-} else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
+    displayPlayerScore.innerText = playerScore;
+    displayComputerScore.innerText = computerScore;
+    } 
+    else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
     playerChoice = null;
     computerChoice = null;
     playerScore++;
     matchResults = "You win! The scissors slice through the paper";
     displayMatchResults.innerText = matchResults;
-} else if (playerChoice === computerChoice) {
+    displayPlayerScore.innerText = playerScore;
+    displayComputerScore.innerText = computerScore;
+    } else if (playerChoice === computerChoice) {
     playerChoice = null;
     computerChoice = null;
     matchResults = "It's a tie!";
     displayMatchResults.innerText = matchResults;
-} else {
+    displayPlayerScore.innerText = playerScore;
+    displayComputerScore.innerText = computerScore;
+    } else {
     playerChoice = null
     computerChoice = null
     computerScore++
     matchResults = "You lose!";
     displayMatchResults.innerText = matchResults;
-}
+    displayPlayerScore.innerText = playerScore;
+    displayComputerScore.innerText = computerScore;
+    }
 }
 
 
