@@ -22,6 +22,8 @@ function generateComputerChoice () {
 const rock = document.body.querySelector("#rock");
 const paper = document.body.querySelector("#paper");
 const scissors = document.body.querySelector("#scissors");
+let matchResults = null;
+const displayMatchResults = document.getElementById("displayMatchResults");
 
 
 rock.addEventListener("click", () => {
@@ -45,29 +47,34 @@ scissors.addEventListener("click", () => {
 
 function match () {
 if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
-    playerChoice = null
-    computerChoice = null
-    playerScore++
-    return console.log("You win! The rock smashed the scissors")
+    playerChoice = null;
+    computerChoice = null;
+    playerScore++;
+    matchResults = "You win! The rock smashed the scissors";
+    displayMatchResults.innerText = matchResults;
 } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
-    playerChoice = null
-    computerChoice = null
-    playerScore++
-    return console.log("You win! The paper covers the rock")
+    playerChoice = null;
+    computerChoice = null;
+    playerScore++;
+    matchResults = "You win! The paper covers the rock";
+    displayMatchResults.innerText = matchResults;
 } else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
-    playerChoice = null
-    computerChoice = null
-    playerScore++
-    return console.log("You win! The scissors slice through the paper")
+    playerChoice = null;
+    computerChoice = null;
+    playerScore++;
+    matchResults = "You win! The scissors slice through the paper";
+    displayMatchResults.innerText = matchResults;
 } else if (playerChoice === computerChoice) {
-    playerChoice = null
-    computerChoice = null
-    return console.log("It's a tie!")
+    playerChoice = null;
+    computerChoice = null;
+    matchResults = "It's a tie!";
+    displayMatchResults.innerText = matchResults;
 } else {
     playerChoice = null
     computerChoice = null
     computerScore++
-    return console.log("You lose!")
+    matchResults = "You lose!";
+    displayMatchResults.innerText = matchResults;
 }
 }
 
