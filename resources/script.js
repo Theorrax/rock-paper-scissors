@@ -1,6 +1,8 @@
 const allChoices = ["ROCK", "PAPER", "SCISSORS"]
-let computerChoice = generateComputerChoice();
+let computerChoice = null;
 let playerChoice = null;
+let playerScore = 0;
+let computerScore = 0;
 
 function getRandomNumber (min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min; 
@@ -24,16 +26,19 @@ const scissors = document.body.querySelector("#scissors");
 
 rock.addEventListener("click", () => {
     playerChoice = allChoices[0];
+    computerChoice = generateComputerChoice();
     match()
 });
 
 paper.addEventListener("click", () => {
     playerChoice = allChoices[1];
+    computerChoice = generateComputerChoice();
     match()
 });
 
 scissors.addEventListener("click", () => {
     playerChoice = allChoices[2];
+    computerChoice = generateComputerChoice();
     match()
 });
 
@@ -41,18 +46,27 @@ scissors.addEventListener("click", () => {
 function match () {
 if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
     playerChoice = null
+    computerChoice = null
+    playerScore++
     return console.log("You win! The rock smashed the scissors")
 } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
     playerChoice = null
+    computerChoice = null
+    playerScore++
     return console.log("You win! The paper covers the rock")
 } else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
     playerChoice = null
+    computerChoice = null
+    playerScore++
     return console.log("You win! The scissors slice through the paper")
 } else if (playerChoice === computerChoice) {
     playerChoice = null
+    computerChoice = null
     return console.log("It's a tie!")
 } else {
     playerChoice = null
+    computerChoice = null
+    computerScore++
     return console.log("You lose!")
 }
 }
