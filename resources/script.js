@@ -1,5 +1,6 @@
 const allChoices = ["ROCK", "PAPER", "SCISSORS"]
 let computerChioce = generateComputerChoice();
+let playerChoice = "";
 
 function getRandomNumber (min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min; 
@@ -15,3 +16,22 @@ function generateComputerChoice () {
         return allChoices[2];
     }
 }
+
+const rock = document.body.querySelector("#rock");
+
+rock.addEventListener("click", () => {
+    return playerChoice = allChoices[0];
+});
+
+const paper = document.body.querySelector("#paper")
+
+paper.addEventListener("click", () => {
+    return playerChoice = allChoices[1];
+});
+
+const scissors = document.body.querySelector("#scissors")
+
+scissors.addEventListener("click", () => {
+    return playerChoice = allChoices[2];
+});
+
