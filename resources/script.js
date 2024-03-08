@@ -12,6 +12,24 @@ let playerScore = 0;
 let computerScore = 0;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 rock.addEventListener("click", () => {
     playerChoice = allChoices[0];
     computerChoice = generateComputerChoice();
@@ -41,6 +59,23 @@ function generateComputerChoice () {
     } else {
         return allChoices[2];
     }
+}
+
+/*To Do: 
+    - The game will begin with a start button. 
+    -Once the start button is clicked. The game will generate, this can be achieved using a eventListener. 
+    -Once the game is loaded, the game screen will display the three choices that the player can make. This screen will also display a running count of the score of the game starting at 0 v. 0. Below the buttons will be a box that will display the outcome of the match 
+*/
+
+if (playerScore === 5 || computerScore === 5) {
+    if (playerScore === 5) {
+        //Display the player winning code
+    } else {
+        //Display the computer winning code
+    }
+} else {
+    //Continue to play the game 
+    //match should be used here. 
 }
 
 function match () {

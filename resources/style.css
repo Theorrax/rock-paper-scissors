@@ -1,0 +1,24 @@
+html{
+    background-color: rgb(255, 250, 247);
+}
+
+.header{
+    background-color: rgb(40, 52, 85);
+    width: 100%;;
+    height: 75px;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 250, 247);
+}
+
+.startScreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid red;
+    margin: 25% 0 0 0;
+}
