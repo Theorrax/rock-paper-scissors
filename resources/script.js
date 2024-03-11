@@ -1,34 +1,43 @@
 const allChoices = ["ROCK", "PAPER", "SCISSORS"]
-const rock = document.body.querySelector("#rock");
-const paper = document.body.querySelector("#paper");
-const scissors = document.body.querySelector("#scissors");
 const outcome = document.getElementById("outcome");
 const displayPlayerScore = document.getElementById("displayPlayerScore");
 const displayComputerScore = document.getElementById("displayComputerScore");
+const initializeGame = document.getElementById("initializeGame");
 let computerChoice = null;
 let playerChoice = null;
 let matchResults = null;
 let playerScore = 0;
 let computerScore = 0;
 
+initializeGame.addEventListener("click", () => {
+    loadGame();
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function loadGame () {
+    initializeGame.remove();
+    const generateGame = document.createElement("div");
+    generateGame.classList.add("generateGame");
+    document.body.appendChild(generateGame);
+    const scoreCard = document.createElement("p");
+    scoreCard.setAttribute("id", "rock");
+    scoreCard.innerHTML = `Current Score: Player <span id="displayPlayerScore">0</span> Computer <span id="displayComputerScore">0</span>`
+    generateGame.appendChild(scoreCard);
+    const outcome = document.createElement("p")
+    outcome.setAttribute("id", "outcome");
+    generateGame.appendChild(outcome);
+    const rock = document.createElement("button");
+    rock.setAttribute("id", "rock")
+    rock.textContent = "Rock";
+    generateGame.appendChild(rock);
+    const paper = document.createElement("button");
+    paper.setAttribute("id", "paper")
+    paper.textContent = "Paper";
+    generateGame.appendChild(paper);
+    const Scissors = document.createElement("button");
+    Scissors.setAttribute("id", "scissors")
+    Scissors.textContent = "Scissors";
+    generateGame.appendChild(Scissors);
+}
 
 rock.addEventListener("click", () => {
     playerChoice = allChoices[0];
