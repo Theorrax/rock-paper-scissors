@@ -1,11 +1,9 @@
 const allChoices = ["ROCK", "PAPER", "SCISSORS"]
-const outcome = document.getElementById("outcome");
 const displayPlayerScore = document.getElementById("displayPlayerScore");
 const displayComputerScore = document.getElementById("displayComputerScore");
 const initializeGame = document.getElementById("initializeGame");
 let computerChoice = null;
 let playerChoice = null;
-let matchResults = null;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -24,6 +22,7 @@ function loadGame () {
     generateGame.appendChild(scoreCard);
     const outcome = document.createElement("p")
     outcome.setAttribute("id", "outcome");
+    outcome.innerText = "";
     generateGame.appendChild(outcome);
     const rock = document.createElement("button");
     rock.setAttribute("id", "rock")
@@ -102,25 +101,25 @@ function match () {
     if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
         displayMatchResults();
         playerScore++;
-        matchResults = "You win! The rock smashed the scissors";
+        outcome.innerText = "You win! The rock smashed the scissors";
     } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
         displayMatchResults();
         playerScore++;
-        matchResults = "You win! The paper covers the rock";
+        outcome.innerText  = "You win! The paper covers the rock";
     } else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
         displayMatchResults();
         playerScore++;
-        matchResults = "You win! The scissors slice through the paper";
+        outcome.innerText  = "You win! The scissors slice through the paper";
     } else if (playerChoice === computerChoice) {
         displayMatchResults()
-        matchResults = "It's a tie!";
+        outcome.innerText = "It's a tie!";
     } else {
         displayMatchResults()
         computerScore++
-        matchResults = "You lose!";
+        outcome.innerText  = "You lose!";
     }
 }
 
 function displayMatchResults () {
-    scoreCard.innerText = "Current Score: Player " + playerScore + " Computer " + computerScore
+    scoreCard.innerText = "Current Score: Player " + playerScore + " Computer " + computerScore;
 };
