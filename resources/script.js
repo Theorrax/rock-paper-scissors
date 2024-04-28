@@ -19,7 +19,7 @@ function loadGame () {
     generateGame.classList.add("generateGame");
     document.body.appendChild(generateGame);
     const scoreCard = document.createElement("p");
-    scoreCard.setAttribute("id", "rock");
+    scoreCard.setAttribute("id", "scoreCard");
     scoreCard.innerHTML = `Current Score: Player <span id="displayPlayerScore">0</span> Computer <span id="displayComputerScore">0</span>`
     generateGame.appendChild(scoreCard);
     const outcome = document.createElement("p")
@@ -29,31 +29,42 @@ function loadGame () {
     rock.setAttribute("id", "rock")
     rock.textContent = "Rock";
     generateGame.appendChild(rock);
+    rock.addEventListener("click", () => {
+        playerChoiceRock();
+    });
     const paper = document.createElement("button");
     paper.setAttribute("id", "paper")
     paper.textContent = "Paper";
     generateGame.appendChild(paper);
+    paper.addEventListener("click", () => {
+        playerChoicePaper();
+    });
     const Scissors = document.createElement("button");
     Scissors.setAttribute("id", "scissors")
     Scissors.textContent = "Scissors";
     generateGame.appendChild(Scissors);
+    scissors.addEventListener("click", () => {
+        playerChoiceScissors();
+    });
 }
 
-rock.addEventListener("click", () => {
+function playerChoiceRock () {
     playerChoice = allChoices[0];
     computerChoice = generateComputerChoice();
-    match()
-});
-paper.addEventListener("click", () => {
+    match();
+};
+
+function playerChoicePaper () {
     playerChoice = allChoices[1];
     computerChoice = generateComputerChoice();
-    match()
-});
-scissors.addEventListener("click", () => {
+    match();
+};
+
+function playerChoiceScissors () {
     playerChoice = allChoices[2];
     computerChoice = generateComputerChoice();
-    match()
-});
+    match();
+};
 
 function getRandomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min; 
@@ -111,9 +122,5 @@ function match () {
 }
 
 function displayMatchResults () {
-    playerChoice = null;
-    computerChoice = null;
-    outcome.innerText = matchResults;
-    displayPlayerScore.innerText = playerScore;
-    displayComputerScore.innerText = computerScore;
-}
+    scoreCard.innerText = "Current Score: Player " + playerScore + " Computer " + computerScore
+};
