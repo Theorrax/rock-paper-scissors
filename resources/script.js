@@ -2,6 +2,8 @@ const allChoices = ["ROCK", "PAPER", "SCISSORS"]
 const displayPlayerScore = document.getElementById("displayPlayerScore");
 const displayComputerScore = document.getElementById("displayComputerScore");
 const initializeGame = document.getElementById("initializeGame");
+const startScreen = document.querySelector(".startScreen");
+const generateGame = document.querySelector(".generateGame");
 let computerChoice = null;
 let playerChoice = null;
 let playerScore = 0;
@@ -11,8 +13,41 @@ initializeGame.addEventListener("click", () => {
     loadGame();
 });
 
+function getRandomNumber (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min; 
+}
+  
+function generateComputerChoice () {
+    let number = getRandomNumber(0, 100)
+    if (number <= 33) {
+        return allChoices[0];
+    } else if (number >= 34 && number <= 66) {
+        return allChoices[1];
+    } else {
+        return allChoices[2];
+    }
+}
+
+function playerChoiceRock () {
+        playerChoice = allChoices[0];
+        computerChoice = generateComputerChoice();
+        keepScoreCount();
+    };
+function playerChoicePaper () {
+        playerChoice = allChoices[1];
+        computerChoice = generateComputerChoice();
+        keepScoreCount();
+    };
+function playerChoiceScissors () {
+        playerChoice = allChoices[2];
+        computerChoice = generateComputerChoice();
+        keepScoreCount();
+    };
+
+
+// Pretty sure most of my issues are coming from the face that the generateGame is defined in the function but can't be seen in the global scope. 
 function loadGame () {
-    initializeGame.remove();
+    startScreen.remove();
     const generateGame = document.createElement("div");
     generateGame.classList.add("generateGame");
     document.body.appendChild(generateGame);
@@ -38,88 +73,76 @@ function loadGame () {
     paper.addEventListener("click", () => {
         playerChoicePaper();
     });
-    const Scissors = document.createElement("button");
-    Scissors.setAttribute("id", "scissors")
-    Scissors.textContent = "Scissors";
-    generateGame.appendChild(Scissors);
+    const scissors = document.createElement("button");
+    scissors.setAttribute("id", "scissors")
+    scissors.textContent = "scissors";
+    generateGame.appendChild(scissors);
     scissors.addEventListener("click", () => {
         playerChoiceScissors();
     });
-}
-
-function playerChoiceRock () {
-    playerChoice = allChoices[0];
-    computerChoice = generateComputerChoice();
-    match();
-};
-
-function playerChoicePaper () {
-    playerChoice = allChoices[1];
-    computerChoice = generateComputerChoice();
-    match();
-};
-
-function playerChoiceScissors () {
-    playerChoice = allChoices[2];
-    computerChoice = generateComputerChoice();
-    match();
-};
-
-function getRandomNumber (min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min; 
-}
-  
-function generateComputerChoice () {
-    let number = getRandomNumber(0, 100)
-    if (number <= 33) {
-        return allChoices[0];
-    } else if (number >= 34 && number <= 66) {
-        return allChoices[1];
-    } else {
-        return allChoices[2];
-    }
-}
-
-/*To Do: 
-    - The game will begin with a start button. 
-    -Once the start button is clicked. The game will generate, this can be achieved using a eventListener. 
-    -Once the game is loaded, the game screen will display the three choices that the player can make. This screen will also display a running count of the score of the game starting at 0 v. 0. Below the buttons will be a box that will display the outcome of the match 
-*/
-
-if (playerScore === 5 || computerScore === 5) {
-    if (playerScore === 5) {
-        //Display the player winning code
-    } else {
-        //Display the computer winning code
-    }
-} else {
-    //Continue to play the game 
-    //match should be used here. 
-}
+    } 
 
 function match () {
-    if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
-        displayMatchResults();
-        playerScore++;
-        outcome.innerText = "You win! The rock smashed the scissors";
-    } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
-        displayMatchResults();
-        playerScore++;
-        outcome.innerText  = "You win! The paper covers the rock";
-    } else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
-        displayMatchResults();
-        playerScore++;
-        outcome.innerText  = "You win! The scissors slice through the paper";
-    } else if (playerChoice === computerChoice) {
-        displayMatchResults()
-        outcome.innerText = "It's a tie!";
-    } else {
-        displayMatchResults()
-        computerScore++
-        outcome.innerText  = "You lose!";
+        if (playerChoice === allChoices[0] && computerChoice === allChoices[2]) {
+            playerScore++;
+            outcome.innerText = "You win! The rock smashed the scissors";
+            displayMatchResults();
+        } else if (playerChoice === allChoices[1] && computerChoice === allChoices[0]) {
+            playerScore++;
+            outcome.innerText  = "You win! The paper covers the rock";
+            displayMatchResults();
+        } else if (playerChoice === allChoices[2] && computerChoice === allChoices[1]) {
+            playerScore++;
+            outcome.innerText  = "You win! The scissors slice through the paper";
+            displayMatchResults();
+        } else if (playerChoice === computerChoice) {
+            outcome.innerText = "It's a tie!";
+            displayMatchResults();
+        } else {
+            computerScore++
+            outcome.innerText  = "You lose!";
+            displayMatchResults();
+        }
     }
-}
 
 function displayMatchResults () {
     scoreCard.innerText = "Current Score: Player " + playerScore + " Computer " + computerScore;
+};
+
+function keepScoreCount () {
+    if (playerScore >= 5 || computerScore >= 5) {
+        endGame();
+    } else {
+        match();
+    }
+}
+
+function endGame () {
+    endGamePrompt.remove();
+    const endGamePrompt = document.createElement("div")
+    endGamePrompt.classList.add("endGamePrompt")
+    document.body.appendChild(endGamePrompt)
+
+
+/*
+TO DO List endGame(): 
+
+- Create a final score count that displays a final score count something that would look like 
+
+if (playerScore >= 5) {
+    "You win! The final score Player: {$playerScore} vs. Computer: {$computerScore}"
+} else {
+    "You Loss! The final score Player: {$playerScore} vs. Computer: {$computerScore}"
+}
+
+- Include a button "Play Again?" 
+
+button.eventListener() => {
+    loadGame()
+}
+
+- Maybe instead of creating a new div that contains a new class the function could recall the prior use of the startScreen Class but instead remain the class using the classList.add("endGame")
+*/ 
+
+    
 };
