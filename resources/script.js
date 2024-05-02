@@ -118,31 +118,27 @@ function keepScoreCount () {
 }
 
 function endGame () {
-    endGamePrompt.remove();
-    const endGamePrompt = document.createElement("div")
-    endGamePrompt.classList.add("endGamePrompt")
-    document.body.appendChild(endGamePrompt)
-
-
-/*
-TO DO List endGame(): 
-
-- Create a final score count that displays a final score count something that would look like 
-
-if (playerScore >= 5) {
-    "You win! The final score Player: {$playerScore} vs. Computer: {$computerScore}"
-} else {
-    "You Loss! The final score Player: {$playerScore} vs. Computer: {$computerScore}"
-}
-
-- Include a button "Play Again?" 
-
-button.eventListener() => {
-    loadGame()
-}
-
-- Maybe instead of creating a new div that contains a new class the function could recall the prior use of the startScreen Class but instead remain the class using the classList.add("endGame")
-*/ 
-
-    
+    const generateGame = document.querySelector(".generateGame")
+    generateGame.remove();
+    const displayGameConclusion = document.createElement("div")
+    displayGameConclusion.classList.add("displayGameConclusion")
+    document.body.appendChild(displayGameConclusion)
+    if (playerScore >= 5) {
+        const playerWinScreen = document.createElement("p")
+        playerWinScreen.textContent = "You win! The final score is Player: " + playerScore + " vs. Computer: " + computerScore;
+        displayGameConclusion.appendChild(playerWinScreen)
+    } else {
+        const computerWinScreen = document.createElement("p")
+        computerWinScreen.innerText = "You lose! The final score is Player: " + playerScore + " vs. Computer: " + computerScore;
+        displayGameConclusion.appendChild(computerWinScreen)
+    }
+    const newGame = document.createElement("button")
+    newGame.textContent = "Play again?"
+    newGame.addEventListener("click", () => {
+        loadGame();
+        displayGameConclusion.remove();
+        playerScore = 0;
+        computerScore = 0;
+    })
+    displayGameConclusion.appendChild(newGame); 
 };
