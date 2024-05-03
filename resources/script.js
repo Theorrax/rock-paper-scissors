@@ -29,23 +29,21 @@ function generateComputerChoice () {
 }
 
 function playerChoiceRock () {
+        keepScoreCount();
         playerChoice = allChoices[0];
         computerChoice = generateComputerChoice();
-        keepScoreCount();
     };
 function playerChoicePaper () {
+        keepScoreCount();
         playerChoice = allChoices[1];
         computerChoice = generateComputerChoice();
-        keepScoreCount();
     };
 function playerChoiceScissors () {
+        keepScoreCount();
         playerChoice = allChoices[2];
         computerChoice = generateComputerChoice();
-        keepScoreCount();
     };
 
-
-// Pretty sure most of my issues are coming from the face that the generateGame is defined in the function but can't be seen in the global scope. 
 function loadGame () {
     startScreen.remove();
     const generateGame = document.createElement("div");
@@ -110,7 +108,7 @@ function displayMatchResults () {
 };
 
 function keepScoreCount () {
-    if (playerScore >= 5 || computerScore >= 5) {
+    if (playerScore === 5 || computerScore === 5) {
         endGame();
     } else {
         match();
